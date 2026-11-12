@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compense la barre de navigation fixe lors des sauts d'ancre. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+
+  /* Focus clavier visible et homogène (WCAG 2.4.7). */
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-gold-500;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em];
+  }
+  .field-input {
+    @apply block w-full rounded-md border border-navy-200 bg-white px-3.5 py-3 text-base text-ink
+      placeholder:text-navy-900/45 focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-600/30
+      aria-[invalid=true]:border-garnet-600 aria-[invalid=true]:ring-garnet-600/20;
+  }
+}
